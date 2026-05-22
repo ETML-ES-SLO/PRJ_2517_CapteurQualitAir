@@ -1,22 +1,23 @@
 /*******************************************************************************
- System Interrupts File
+  ADC Peripheral Library Interface Source File
 
-  Company:
+  Company
     Microchip Technology Inc.
 
-  File Name:
-    interrupt.h
+  File Name
+    plib_adc.c
 
-  Summary:
-    Interrupt vectors mapping
+  Summary
+    ADC peripheral library source.
 
-  Description:
-    This file contains declarations of device vectors used by Harmony 3
- *******************************************************************************/
+  Description
+    This file implements the ADC peripheral library.
+
+*******************************************************************************/
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2025 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -36,29 +37,72 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *******************************************************************************/
+*******************************************************************************/
 // DOM-IGNORE-END
-
-#ifndef INTERRUPTS_H
-#define INTERRUPTS_H
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Included Files
-// *****************************************************************************
-// *****************************************************************************
-#include <stdint.h>
-
-
+#include "device.h"
+#include "plib_adc.h"
+#include "interrupts.h"
 
 // *****************************************************************************
 // *****************************************************************************
-// Section: Handler Routines
+// Section: ADC Implementation
 // *****************************************************************************
 // *****************************************************************************
-void I2C3_MASTER_InterruptHandler( void );
-void I2C3_BUS_InterruptHandler( void );
 
 
+void ADC_Initialize(void)
+{
+    AD1CON1CLR = _AD1CON1_ON_MASK;
 
-#endif // INTERRUPTS_H
+    AD1CON1 = 0x8;
+    AD1CON3 = 0x1f04;
+    AD1CHS = 0x2;
+
+
+    /* Turn ON ADC */
+    AD1CON1SET = _AD1CON1_ON_MASK;
+}
+
+void ADC_Enable(void)
+{
+    AD1CON1SET = _AD1CON1_ON_MASK;
+}
+
+void ADC_Disable(void)
+{
+    AD1CON1CLR = _AD1CON1_ON_MASK;
+}
+
+void ADC_SamplingStart(void)
+{
+    AD1CON1CLR = _AD1CON1_DONE_MASK;
+    AD1CON1SET = _AD1CON1_SAMP_MASK;
+}
+
+void ADC_ConversionStart(void)
+{
+    AD1CON1CLR = _AD1CON1_SAMP_MASK;
+}
+
+void ADC_InputSelect(ADC_INPUT_POSITIVE positiveInput)
+{
+    AD1CHSbits.CH0SA = (uint8_t)positiveInput;
+}
+
+void ADC_InputScanSelect(ADC_INPUTS_SCAN scanInputs)
+{
+    AD1CSS = (uint32_t)scanInputs;
+}
+
+/*Check if conversion result is available */
+bool ADC_ResultIsReady(void)
+{
+    return (AD1CON1bits.DONE != 0U);
+}
+
+/* Read the conversion result */
+uint32_t ADC_ResultGet(ADC_RESULT_BUFFER bufferNumber)
+{
+    return (*((&ADC1BUF0) + (bufferNumber << 2)));
+}
+

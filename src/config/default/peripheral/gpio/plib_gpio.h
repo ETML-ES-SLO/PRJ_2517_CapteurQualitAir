@@ -72,6 +72,46 @@
 #define ADC_BAT_GetLatch()          ((LATB >> 0) & 0x1)
 #define ADC_BAT_PIN                  GPIO_PIN_RB0
 
+/*** Macros for STAT_PMIC pin ***/
+#define STAT_PMIC_Set()               (LATBSET = (1<<1))
+#define STAT_PMIC_Clear()             (LATBCLR = (1<<1))
+#define STAT_PMIC_Toggle()            (LATBINV= (1<<1))
+#define STAT_PMIC_OutputEnable()      (TRISBCLR = (1<<1))
+#define STAT_PMIC_InputEnable()       (TRISBSET = (1<<1))
+#define STAT_PMIC_Get()               ((PORTB >> 1) & 0x1)
+#define STAT_PMIC_GetLatch()          ((LATB >> 1) & 0x1)
+#define STAT_PMIC_PIN                  GPIO_PIN_RB1
+
+/*** Macros for TFT_BACKLIGHT pin ***/
+#define TFT_BACKLIGHT_Set()               (LATASET = (1<<2))
+#define TFT_BACKLIGHT_Clear()             (LATACLR = (1<<2))
+#define TFT_BACKLIGHT_Toggle()            (LATAINV= (1<<2))
+#define TFT_BACKLIGHT_OutputEnable()      (TRISACLR = (1<<2))
+#define TFT_BACKLIGHT_InputEnable()       (TRISASET = (1<<2))
+#define TFT_BACKLIGHT_Get()               ((PORTA >> 2) & 0x1)
+#define TFT_BACKLIGHT_GetLatch()          ((LATA >> 2) & 0x1)
+#define TFT_BACKLIGHT_PIN                  GPIO_PIN_RA2
+
+/*** Macros for TFT_RESET pin ***/
+#define TFT_RESET_Set()               (LATASET = (1<<3))
+#define TFT_RESET_Clear()             (LATACLR = (1<<3))
+#define TFT_RESET_Toggle()            (LATAINV= (1<<3))
+#define TFT_RESET_OutputEnable()      (TRISACLR = (1<<3))
+#define TFT_RESET_InputEnable()       (TRISASET = (1<<3))
+#define TFT_RESET_Get()               ((PORTA >> 3) & 0x1)
+#define TFT_RESET_GetLatch()          ((LATA >> 3) & 0x1)
+#define TFT_RESET_PIN                  GPIO_PIN_RA3
+
+/*** Macros for TFT_COMMAND_DATA_SELECT pin ***/
+#define TFT_COMMAND_DATA_SELECT_Set()               (LATBSET = (1<<4))
+#define TFT_COMMAND_DATA_SELECT_Clear()             (LATBCLR = (1<<4))
+#define TFT_COMMAND_DATA_SELECT_Toggle()            (LATBINV= (1<<4))
+#define TFT_COMMAND_DATA_SELECT_OutputEnable()      (TRISBCLR = (1<<4))
+#define TFT_COMMAND_DATA_SELECT_InputEnable()       (TRISBSET = (1<<4))
+#define TFT_COMMAND_DATA_SELECT_Get()               ((PORTB >> 4) & 0x1)
+#define TFT_COMMAND_DATA_SELECT_GetLatch()          ((LATB >> 4) & 0x1)
+#define TFT_COMMAND_DATA_SELECT_PIN                  GPIO_PIN_RB4
+
 /*** Macros for AIR_SDA pin ***/
 #define AIR_SDA_Get()               ((PORTB >> 7) & 0x1)
 #define AIR_SDA_GetLatch()          ((LATB >> 7) & 0x1)
@@ -86,6 +126,26 @@
 #define TFT_SDO_Get()               ((PORTB >> 9) & 0x1)
 #define TFT_SDO_GetLatch()          ((LATB >> 9) & 0x1)
 #define TFT_SDO_PIN                  GPIO_PIN_RB9
+
+/*** Macros for GPIO_TP14 pin ***/
+#define GPIO_TP14_Set()               (LATBSET = (1<<10))
+#define GPIO_TP14_Clear()             (LATBCLR = (1<<10))
+#define GPIO_TP14_Toggle()            (LATBINV= (1<<10))
+#define GPIO_TP14_OutputEnable()      (TRISBCLR = (1<<10))
+#define GPIO_TP14_InputEnable()       (TRISBSET = (1<<10))
+#define GPIO_TP14_Get()               ((PORTB >> 10) & 0x1)
+#define GPIO_TP14_GetLatch()          ((LATB >> 10) & 0x1)
+#define GPIO_TP14_PIN                  GPIO_PIN_RB10
+
+/*** Macros for GPIO_TP13 pin ***/
+#define GPIO_TP13_Set()               (LATBSET = (1<<11))
+#define GPIO_TP13_Clear()             (LATBCLR = (1<<11))
+#define GPIO_TP13_Toggle()            (LATBINV= (1<<11))
+#define GPIO_TP13_OutputEnable()      (TRISBCLR = (1<<11))
+#define GPIO_TP13_InputEnable()       (TRISBSET = (1<<11))
+#define GPIO_TP13_Get()               ((PORTB >> 11) & 0x1)
+#define GPIO_TP13_GetLatch()          ((LATB >> 11) & 0x1)
+#define GPIO_TP13_PIN                  GPIO_PIN_RB11
 
 /*** Macros for AIR_SCL pin ***/
 #define AIR_SCL_Get()               ((PORTB >> 13) & 0x1)

@@ -162,9 +162,15 @@ void SYS_Initialize ( void* data )
 
 	GPIO_Initialize();
 
+    I2C3_Initialize();
+
+    ADC_Initialize();
+
 
     EVIC_Initialize();
 
+	/* Enable global interrupts */
+    (void)__builtin_enable_interrupts();
 
 
 

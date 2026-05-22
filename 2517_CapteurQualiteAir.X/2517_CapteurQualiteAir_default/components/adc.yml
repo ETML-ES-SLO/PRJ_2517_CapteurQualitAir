@@ -1,0 +1,73 @@
+configVersion: 1.0.0
+componentName: adc
+coreVersion: 5.8.4
+device: PIC32MM0256GPM028
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: adc
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.25.2
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: adc
+          x: '46'
+          y: '151'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    AD1CHS__CH0SA:
+      attributes:
+        id: AD1CHS__CH0SA
+      children:
+      - children:
+        - attributes:
+            value: '2'
+          type: User
+        type: Values
+      type: KeyValueSet
+    AD1CON1__MODE12:
+      attributes:
+        id: AD1CON1__MODE12
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    ADC_AD1CHS:
+      attributes:
+        id: ADC_AD1CHS
+      children:
+      - children:
+        - attributes:
+            id: adc
+            value: '2'
+          type: Dynamic
+        type: Values
+      type: Hex
+    ADC_AD1CON1:
+      attributes:
+        id: ADC_AD1CON1
+      children:
+      - children:
+        - attributes:
+            id: adc
+            value: '8'
+          type: Dynamic
+        type: Values
+      type: Hex
+  userData: {}
