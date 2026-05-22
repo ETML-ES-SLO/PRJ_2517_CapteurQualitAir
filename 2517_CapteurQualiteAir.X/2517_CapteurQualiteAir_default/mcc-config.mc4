@@ -1,0 +1,42 @@
+configVersion: 1.0.0
+coreVersion: 5.8.4
+spaHostVersion: 1.2.1
+device: PIC32MM0256GPM028
+deviceLibrary: {}
+groupModules: []
+modules:
+- core
+- dfp
+generatedFileHashHistoryMap:
+- file: ..\src\config\default\definitions.h
+  hash: 118db8408771c2eec19157979b14b47e14f4da87e3e5d9aa8cc7f8cbe5a64f9b
+- file: ..\src\config\default\device.h
+  hash: 4d4341a6f9628cea0bf73f980b639f7cb81089e55a60ad7e434be2a71e477442
+- file: ..\src\config\default\exceptions.c
+  hash: df6a7db71f29db985de306abd7b848a24111cef6398ccfb9479449ae4fbc069d
+- file: ..\src\config\default\initialization.c
+  hash: e689a8babe9c205d9df850361e75bb5890d00e2114828aed133071fc68619249
+- file: ..\src\config\default\interrupts.c
+  hash: 797936386be1072a51a41ed55d38dc4a8ed2bbf29a0a6e89fba8ee6651ac3610
+- file: ..\src\config\default\interrupts.h
+  hash: 2b6f3a9da8b2f61b5ea3f584838ad851b151646b5fda0fb709cc05e65576fd37
+- file: ..\src\config\default\p32MM0256GPM028.ld
+  hash: a8e191bc44d963a57747afe5b9c5562ff9f0adfcbb8ef4fc53847083457f0762
+- file: ..\src\config\default\peripheral\clk\plib_clk.c
+  hash: ae2ccbe79fca51db2c35855f856ae397e5abfa10a5d83c064d930faff2e47399
+- file: ..\src\config\default\peripheral\clk\plib_clk.h
+  hash: 35384f2e13e59b7190bf77f6996baf3ea2377ec42df94979a6f793326def5255
+- file: ..\src\config\default\peripheral\evic\plib_evic.c
+  hash: 7469a4bbacca8b32babf88bd8a6fabd05cf3198b4de7782d043f65af39c38d38
+- file: ..\src\config\default\peripheral\evic\plib_evic.h
+  hash: c3713e8874f82c773b96cc499054e6cf0b691f942b601e9487bd947d582f733c
+- file: ..\src\config\default\peripheral\gpio\plib_gpio.c
+  hash: 61a3fb72cc16517d1dc59bea7b119bc8083c68dc84effac842e86b6ad9198e26
+- file: ..\src\config\default\peripheral\gpio\plib_gpio.h
+  hash: dadd90949ef385c7592054320c00e733278010c2950435463e9ff2bbfc458d6d
+- file: ..\src\config\default\stdio\xc32_monitor.c
+  hash: 858f8710d4287200a5ee7f3b3ad7c24f505aed9c05c16956ab0ff9f7bb162a6a
+- file: ..\src\config\default\toolchain_specifics.h
+  hash: f6f3282ecb4ad8b5ba3487b7d7b8f6cfa3f977240726af07eaab058caf904381
+- file: ..\src\main.c
+  hash: d3c233d419e6304bfacbafc18cc68c0f5c26e365f23b20ea40ccfac458f664c5
