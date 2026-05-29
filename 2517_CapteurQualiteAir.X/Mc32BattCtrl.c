@@ -24,16 +24,48 @@
 // Fonctions
 //------------------------------------------------//
 
+static inline void delay_us(uint32_t us)
+{
+    // À 24 MHz ? 1 instruction ? 41 ns
+    // 1 µs ? 24 instructions
+    for(uint32_t i = 0; i < (us * CLK_MUC_MHZ); i++)
+    {
+        __asm__ volatile("nop");
+    }
+}
+
+
 uint16_t batt_read_voltage(void)
 {
-    uint32_t adcRawValue;
+    uint16_t adcRawValue;
     uint16_t voltage;       // Tension en [mV]
     
     // Lécture de la valeur sur l'ADC
-    adcRawValue = ADC_ResultGet(ADC_RESULT_BUFFER_2);
+    ADC_SamplingStart(); 
+    delay_us(5);    // Attente obligatoire pour charge condo interne 
+    ADC_ConversionStart();
+    
+    // Attendre la fin de conversion
+    while(!ADC_ResultIsReady());
+     
+    adcRawValue = ADC_ResultGet(ADC_RESULT_BUFFER_0);
     
     // Conversion en tension de l'accu
-    
+    voltage = ((adcRawValue * MCU_V_POWER) / ADC_MAX_VALUE) * BAT_DIV_RATION;
     
     return voltage;
+}
+
+
+uint8_t batt_convert_to_percentage(uint16_t voltage)
+{
+    uint8_t percentage;
+    //percentage = voltage [à finir]
+    return percentage;
+}
+
+void batt_init(void)
+{
+    ADC_Initialize();
+    ADC_Enable();
 }

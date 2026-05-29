@@ -70,4 +70,170 @@ data:
           type: Dynamic
         type: Values
       type: Hex
+    ADC_TCLK:
+      attributes:
+        id: ADC_TCLK
+      children:
+      - children:
+        - attributes:
+            id: adc
+            value: '500.0'
+          type: Dynamic
+        type: Values
+      type: Float
+    ADC_AD1CON3:
+      attributes:
+        id: ADC_AD1CON3
+      children:
+      - children:
+        - attributes:
+            id: adc
+            value: '7942'
+          type: Dynamic
+        type: Values
+      type: Hex
+    AD1CON3__ADCS:
+      attributes:
+        id: AD1CON3__ADCS
+      children:
+      - children:
+        - attributes:
+            value: '6'
+          type: User
+        type: Values
+      type: Integer
+    ADC_AD1CSSL:
+      attributes:
+        id: ADC_AD1CSSL
+      children:
+      - children:
+        - attributes:
+            id: adc
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    ADC_AD1CON2:
+      attributes:
+        id: ADC_AD1CON2
+      children:
+      - children:
+        - attributes:
+            id: adc
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    AD1CON2__CSCNA:
+      attributes:
+        id: AD1CON2__CSCNA
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    AD1CSSL__CSSL_2:
+      attributes:
+        id: AD1CSSL__CSSL_2
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    AD1CSSL__CSSL_6:
+      attributes:
+        id: AD1CSSL__CSSL_6
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    AD1CSSL__CSSL_10:
+      attributes:
+        id: AD1CSSL__CSSL_10
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    AD1CSSL__CSSL_14:
+      attributes:
+        id: AD1CSSL__CSSL_14
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    AD1CON2__VCFG:
+      attributes:
+        id: AD1CON2__VCFG
+      children:
+      - children:
+        - attributes:
+            value: '0'
+          type: User
+        type: Values
+      type: KeyValueSet
+    AD1CON1__SIDL:
+      attributes:
+        id: AD1CON1__SIDL
+      children:
+      - children:
+        - attributes:
+            value: '0'
+          type: User
+        type: Values
+      type: KeyValueSet
+    AD1CON1__ASAM:
+      attributes:
+        id: AD1CON1__ASAM
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
   userData: {}

@@ -1,11 +1,11 @@
 configVersion: 1.0.0
-componentName: i2c3
+componentName: tmr2
 coreVersion: 5.8.4
 device: PIC32MM0256GPM028
 library: []
 dependency:
 - dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
-  name: i2c3
+  name: tmr2
   type: module
   version: ''
 - dependencyPackage: ''
@@ -21,65 +21,83 @@ data:
     children:
     - children:
       - attributes:
-          id: i2c3
-          x: '42'
-          y: '55'
+          id: tmr2
+          x: '261'
+          y: '50'
         type: ElementPosition
       type: ElementPositions
     type: ComponentGraph
   symbols:
-    BRG_VALUE:
+    TCON_REG_VALUE:
       attributes:
-        id: BRG_VALUE
+        id: TCON_REG_VALUE
       children:
       - children:
         - attributes:
-            id: i2c3
-            value: '117'
+            id: tmr2
+            value: '112'
+          type: Dynamic
+        type: Values
+      type: Hex
+    TIMER_CLOCK_FREQ:
+      attributes:
+        id: TIMER_CLOCK_FREQ
+      children:
+      - children:
+        - attributes:
+            id: tmr2
+            value: '93750'
           type: Dynamic
         type: Values
       type: Integer
-    I2CS_RISE_TIME_CORE_TIMER_CNTS:
+    TIMER_PERIOD:
       attributes:
-        id: I2CS_RISE_TIME_CORE_TIMER_CNTS
+        id: TIMER_PERIOD
       children:
       - children:
         - attributes:
-            id: i2c3
-            value: '3'
-          type: Dynamic
-        type: Values
-      type: Integer
-    I2CS_SETUP_TIME_CORE_TIMER_CNTS:
-      attributes:
-        id: I2CS_SETUP_TIME_CORE_TIMER_CNTS
-      children:
-      - children:
-        - attributes:
-            id: i2c3
-            value: '1'
-          type: Dynamic
-        type: Values
-      type: Integer
-    I2C_CLOCK_SPEED_HZ:
-      attributes:
-        id: I2C_CLOCK_SPEED_HZ
-      children:
-      - children:
-        - attributes:
-            id: i2c3
-            value: '100000'
+            id: tmr2
+            value: '9374'
           type: Dynamic
         type: Values
       type: Long
-    I2C_CLOCK_SPEED:
+    TIMER_PRE_SCALER:
       attributes:
-        id: I2C_CLOCK_SPEED
+        id: TIMER_PRE_SCALER
       children:
       - children:
         - attributes:
-            value: '100000'
+            value: '0'
           type: User
         type: Values
-      type: Long
+      type: KeyValueSet
+    TIMER_TIME_PERIOD_MS:
+      attributes:
+        id: TIMER_TIME_PERIOD_MS
+      children:
+      - children:
+        - attributes:
+            id: max
+          children:
+          - type: Value
+            value: '699.06134'
+          type: Float
+        type: Attributes
+      - children:
+        - attributes:
+            value: '100.0'
+          type: User
+        type: Values
+      type: Float
+    TMR_PRESCALER_VALUE:
+      attributes:
+        id: TMR_PRESCALER_VALUE
+      children:
+      - children:
+        - attributes:
+            id: tmr2
+            value: '256'
+          type: Dynamic
+        type: Values
+      type: Integer
   userData: {}

@@ -62,6 +62,24 @@ uint16_t ens160_read16(uint8_t addr)
     return data;
 }
 
+void ens160_write8(uint8_t addr, uint8_t data)
+{
+    uint8_t buf[2];
+    buf[0] = addr;
+    buf[1] = data;
+    I2C3_Write(ENS160_ADDR_I2C_PIN_LOW, buf, sizeof(buf));
+}
+
+void ens160_write16(uint8_t addr, uint16_t data)
+{
+    uint8_t buf[3];
+    buf[0] = addr;
+    buf[1] = data & 0xFF;           // LSB
+    buf[2] = (data >> 8) & 0xFF;    // MSB
+
+    I2C3_Write(ENS160_ADDR_I2C_PIN_LOW, buf, sizeof(buf));
+}
+
 ens160_status ens160_read_status(void)
 {
     uint8_t rawStatus;
@@ -140,8 +158,20 @@ ens160_aqi_uba ens160_read_aqi(void)
     }
 }
 
-void ens160_init(void)
+bool ens160_init(void)
 {
+    I2C3_Initialize(); // Init I2C
+    TMR2_Start(); // Init Timer2 10Hz
+    
+    // Lecture de PART_ID pour voir si ENS160 répond
+    if(PART_ID_RET != ens160_read16(PART_ID))
+    {
+        return false; // Init NOK
+    }
+    
+    // Init avec write
+    
+    // Check si temp d'attente nécessaire
     switch(ens160_read_status())
     {
         case WARM_UP:
@@ -160,4 +190,6 @@ void ens160_init(void)
             break;
         }
     }
+    
+    return true; // Init OK
 }

@@ -134,7 +134,7 @@ data:
       - children:
         - attributes:
             id: core
-            value: '0'
+            value: '24000000'
           type: Dynamic
         type: Values
       type: Integer
@@ -708,7 +708,7 @@ data:
       - children:
         - attributes:
             id: core
-            value: '3088'
+            value: '11408'
           type: Dynamic
         type: Values
       type: Hex
@@ -865,17 +865,6 @@ data:
           type: Dynamic
         type: Values
       type: Hex
-    I2C3_CLOCK_ENABLE:
-      attributes:
-        id: I2C3_CLOCK_ENABLE
-      children:
-      - children:
-        - attributes:
-            id: i2c3
-            value: 'true'
-          type: Dynamic
-        type: Values
-      type: Boolean
     I2C3_MASTER_INTERRUPT_ENABLE_UPDATE:
       attributes:
         id: I2C3_MASTER_INTERRUPT_ENABLE_UPDATE
@@ -898,17 +887,6 @@ data:
           type: Dynamic
         type: Values
       type: Boolean
-    I2C3_MASTER_INTERRUPT_ENABLE:
-      attributes:
-        id: I2C3_MASTER_INTERRUPT_ENABLE
-      children:
-      - children:
-        - attributes:
-            id: i2c3
-            value: 'true'
-          type: Dynamic
-        type: Values
-      type: Boolean
     EVIC_72_HANDLER_LOCK:
       attributes:
         id: EVIC_72_HANDLER_LOCK
@@ -920,17 +898,6 @@ data:
           type: Dynamic
         type: Values
       type: Boolean
-    I2C3_MASTER_INTERRUPT_HANDLER_LOCK:
-      attributes:
-        id: I2C3_MASTER_INTERRUPT_HANDLER_LOCK
-      children:
-      - children:
-        - attributes:
-            id: i2c3
-            value: 'true'
-          type: Dynamic
-        type: Values
-      type: Boolean
     EVIC_72_INTERRUPT_HANDLER:
       attributes:
         id: EVIC_72_INTERRUPT_HANDLER
@@ -938,17 +905,6 @@ data:
       - children:
         - attributes:
             id: core
-            value: I2C3_MASTER_InterruptHandler
-          type: Dynamic
-        type: Values
-      type: String
-    I2C3_MASTER_INTERRUPT_HANDLER:
-      attributes:
-        id: I2C3_MASTER_INTERRUPT_HANDLER
-      children:
-      - children:
-        - attributes:
-            id: i2c3
             value: I2C3_MASTER_InterruptHandler
           type: Dynamic
         type: Values
@@ -975,17 +931,6 @@ data:
           type: Dynamic
         type: Values
       type: Boolean
-    I2C3_SLAVE_INTERRUPT_ENABLE:
-      attributes:
-        id: I2C3_SLAVE_INTERRUPT_ENABLE
-      children:
-      - children:
-        - attributes:
-            id: i2c3
-            value: 'false'
-          type: Dynamic
-        type: Values
-      type: Boolean
     EVIC_71_HANDLER_LOCK:
       attributes:
         id: EVIC_71_HANDLER_LOCK
@@ -997,17 +942,6 @@ data:
           type: Dynamic
         type: Values
       type: Boolean
-    I2C3_SLAVE_INTERRUPT_HANDLER_LOCK:
-      attributes:
-        id: I2C3_SLAVE_INTERRUPT_HANDLER_LOCK
-      children:
-      - children:
-        - attributes:
-            id: i2c3
-            value: 'false'
-          type: Dynamic
-        type: Values
-      type: Boolean
     EVIC_71_INTERRUPT_HANDLER:
       attributes:
         id: EVIC_71_INTERRUPT_HANDLER
@@ -1015,17 +949,6 @@ data:
       - children:
         - attributes:
             id: core
-            value: I2C3_SLAVE_Handler
-          type: Dynamic
-        type: Values
-      type: String
-    I2C3_SLAVE_INTERRUPT_HANDLER:
-      attributes:
-        id: I2C3_SLAVE_INTERRUPT_HANDLER
-      children:
-      - children:
-        - attributes:
-            id: i2c3
             value: I2C3_SLAVE_Handler
           type: Dynamic
         type: Values
@@ -1052,17 +975,6 @@ data:
           type: Dynamic
         type: Values
       type: Boolean
-    I2C3_BUS_INTERRUPT_ENABLE:
-      attributes:
-        id: I2C3_BUS_INTERRUPT_ENABLE
-      children:
-      - children:
-        - attributes:
-            id: i2c3
-            value: 'true'
-          type: Dynamic
-        type: Values
-      type: Boolean
     EVIC_73_HANDLER_LOCK:
       attributes:
         id: EVIC_73_HANDLER_LOCK
@@ -1074,17 +986,6 @@ data:
           type: Dynamic
         type: Values
       type: Boolean
-    I2C3_BUS_INTERRUPT_HANDLER_LOCK:
-      attributes:
-        id: I2C3_BUS_INTERRUPT_HANDLER_LOCK
-      children:
-      - children:
-        - attributes:
-            id: i2c3
-            value: 'true'
-          type: Dynamic
-        type: Values
-      type: Boolean
     EVIC_73_INTERRUPT_HANDLER:
       attributes:
         id: EVIC_73_INTERRUPT_HANDLER
@@ -1092,17 +993,6 @@ data:
       - children:
         - attributes:
             id: core
-            value: I2C3_BUS_InterruptHandler
-          type: Dynamic
-        type: Values
-      type: String
-    I2C3_BUS_INTERRUPT_HANDLER:
-      attributes:
-        id: I2C3_BUS_INTERRUPT_HANDLER
-      children:
-      - children:
-        - attributes:
-            id: i2c3
             value: I2C3_BUS_InterruptHandler
           type: Dynamic
         type: Values
@@ -1269,6 +1159,298 @@ data:
           type: Dynamic
         type: Values
       type: Boolean
+    BSP_PIN_24_DIR:
+      attributes:
+        id: BSP_PIN_24_DIR
+      children:
+      - children:
+        - attributes:
+            value: Out
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_16_DIR:
+      attributes:
+        id: BSP_PIN_16_DIR
+      children:
+      - children:
+        - attributes:
+            value: Out
+          type: User
+        type: Values
+      type: String
+    I2C3_CLOCK_ENABLE:
+      attributes:
+        id: I2C3_CLOCK_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: i2c3
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    I2C3_MASTER_INTERRUPT_ENABLE:
+      attributes:
+        id: I2C3_MASTER_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: i2c3
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    I2C3_MASTER_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: I2C3_MASTER_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: i2c3
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    I2C3_MASTER_INTERRUPT_HANDLER:
+      attributes:
+        id: I2C3_MASTER_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: i2c3
+            value: I2C3_MASTER_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    I2C3_SLAVE_INTERRUPT_ENABLE:
+      attributes:
+        id: I2C3_SLAVE_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: i2c3
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    I2C3_SLAVE_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: I2C3_SLAVE_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: i2c3
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    I2C3_SLAVE_INTERRUPT_HANDLER:
+      attributes:
+        id: I2C3_SLAVE_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: i2c3
+            value: I2C3_SLAVE_Handler
+          type: Dynamic
+        type: Values
+      type: String
+    I2C3_BUS_INTERRUPT_ENABLE:
+      attributes:
+        id: I2C3_BUS_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: i2c3
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    I2C3_BUS_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: I2C3_BUS_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: i2c3
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    I2C3_BUS_INTERRUPT_HANDLER:
+      attributes:
+        id: I2C3_BUS_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: i2c3
+            value: I2C3_BUS_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    EVIC_17_PRIVALUE:
+      attributes:
+        id: EVIC_17_PRIVALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '1024'
+          type: Dynamic
+        type: Values
+      type: Hex
+    EVIC_17_PRIORITY:
+      attributes:
+        id: EVIC_17_PRIORITY
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: Combo
+    TIMER_1_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: TIMER_1_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_17_ENABLE:
+      attributes:
+        id: EVIC_17_ENABLE
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    EVIC_17_SUBPRIVALUE:
+      attributes:
+        id: EVIC_17_SUBPRIVALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Hex
+    EVIC_17_SUBPRIORITY:
+      attributes:
+        id: EVIC_17_SUBPRIORITY
+      children:
+      - children:
+        - attributes:
+            value: '0'
+          type: User
+        type: Values
+      type: Combo
+    PMD4_REG_VALUE:
+      attributes:
+        id: PMD4_REG_VALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '5'
+          type: Dynamic
+        type: Values
+      type: Hex
+    TMR2_CLOCK_ENABLE:
+      attributes:
+        id: TMR2_CLOCK_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: tmr2
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TIMER_2_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: TIMER_2_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_18_ENABLE:
+      attributes:
+        id: EVIC_18_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TIMER_2_INTERRUPT_ENABLE:
+      attributes:
+        id: TIMER_2_INTERRUPT_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: tmr2
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_18_HANDLER_LOCK:
+      attributes:
+        id: EVIC_18_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    TIMER_2_INTERRUPT_HANDLER_LOCK:
+      attributes:
+        id: TIMER_2_INTERRUPT_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: tmr2
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_18_INTERRUPT_HANDLER:
+      attributes:
+        id: EVIC_18_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: TIMER_2_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    TIMER_2_INTERRUPT_HANDLER:
+      attributes:
+        id: TIMER_2_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: tmr2
+            value: TIMER_2_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
   userData:
     children:
     - attributes:

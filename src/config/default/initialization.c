@@ -164,6 +164,8 @@ void SYS_Initialize ( void* data )
 
     I2C3_Initialize();
 
+    TMR2_Initialize();
+
     ADC_Initialize();
 
 

@@ -1,17 +1,19 @@
 /*******************************************************************************
-  ADC Peripheral Library Interface Source File
+  TMR Peripheral Library Interface Source File
 
   Company
     Microchip Technology Inc.
 
   File Name
-    plib_adc.c
+    plib_tmr2.c
 
   Summary
-    ADC peripheral library source.
+    TMR2 peripheral library source file.
 
   Description
-    This file implements the ADC peripheral library.
+    This file implements the interface to the TMR peripheral library.  This
+    library provides access to and control of the associated peripheral
+    instance.
 
 *******************************************************************************/
 
@@ -39,70 +41,109 @@
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
 // DOM-IGNORE-END
+
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: Included Files
+// *****************************************************************************
+// *****************************************************************************
+
 #include "device.h"
-#include "plib_adc.h"
+#include "plib_tmr2.h"
 #include "interrupts.h"
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: ADC Implementation
-// *****************************************************************************
-// *****************************************************************************
+
+static volatile TMR_TIMER_OBJECT tmr2Obj;
 
 
-void ADC_Initialize(void)
+void TMR2_Initialize(void)
 {
-    AD1CON1CLR = _AD1CON1_ON_MASK;
+    /* Disable Timer */
+    T2CONCLR = _T2CON_ON_MASK;
 
-    AD1CON1 = 0x8;
-    AD1CON3 = 0x1f06;
-    AD1CHS = 0x2;
+    /*
+    SIDL = 0
+    TCKPS =7
+    T32   = 0
+    TCS = 0
+    */
+    T2CONSET = 0x70;
 
+    /* Clear counter */
+    TMR2 = 0x0;
 
-    /* Turn ON ADC */
-    AD1CON1SET = _AD1CON1_ON_MASK;
+    /*Set period */
+    PR2 = 9374U;
+
+    /* Enable TMR Interrupt */
+    IEC0SET = _IEC0_T2IE_MASK;
+
 }
 
-void ADC_Enable(void)
+
+void TMR2_Start(void)
 {
-    AD1CON1SET = _AD1CON1_ON_MASK;
+    T2CONSET = _T2CON_ON_MASK;
 }
 
-void ADC_Disable(void)
+
+void TMR2_Stop (void)
 {
-    AD1CON1CLR = _AD1CON1_ON_MASK;
+    T2CONCLR = _T2CON_ON_MASK;
 }
 
-void ADC_SamplingStart(void)
+void TMR2_PeriodSet(uint16_t period)
 {
-    AD1CON1CLR = _AD1CON1_DONE_MASK;
-    AD1CON1SET = _AD1CON1_SAMP_MASK;
+    PR2  = period;
 }
 
-void ADC_ConversionStart(void)
+uint16_t TMR2_PeriodGet(void)
 {
-    AD1CON1CLR = _AD1CON1_SAMP_MASK;
+    return (uint16_t)PR2;
 }
 
-void ADC_InputSelect(ADC_INPUT_POSITIVE positiveInput)
+uint16_t TMR2_CounterGet(void)
 {
-    AD1CHSbits.CH0SA = (uint8_t)positiveInput;
+    return (uint16_t)(TMR2);
 }
 
-void ADC_InputScanSelect(ADC_INPUTS_SCAN scanInputs)
+
+uint32_t TMR2_FrequencyGet(void)
 {
-    AD1CSS = (uint32_t)scanInputs;
+    return (93750);
 }
 
-/*Check if conversion result is available */
-bool ADC_ResultIsReady(void)
+
+void __attribute__((used)) TIMER_2_InterruptHandler (void)
 {
-    return (AD1CON1bits.DONE != 0U);
+    uint32_t status  = 0U;
+    status = IFS0bits.T2IF;
+    IFS0CLR = _IFS0_T2IF_MASK;
+
+    if((tmr2Obj.callback_fn != NULL))
+    {
+        uintptr_t context = tmr2Obj.context;
+        tmr2Obj.callback_fn(status, context);
+    }
 }
 
-/* Read the conversion result */
-uint32_t ADC_ResultGet(ADC_RESULT_BUFFER bufferNumber)
+
+void TMR2_InterruptEnable(void)
 {
-    return (*((&ADC1BUF0) + (bufferNumber << 2)));
+    IEC0SET = _IEC0_T2IE_MASK;
 }
 
+
+void TMR2_InterruptDisable(void)
+{
+    IEC0CLR = _IEC0_T2IE_MASK;
+}
+
+
+void TMR2_CallbackRegister( TMR_CALLBACK callback_fn, uintptr_t context )
+{
+    /* Save callback_fn and context in local memory */
+    tmr2Obj.callback_fn = callback_fn;
+    tmr2Obj.context = context;
+}

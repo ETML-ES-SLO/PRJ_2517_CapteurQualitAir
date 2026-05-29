@@ -66,6 +66,7 @@
 // Section: System Interrupt Vector declarations
 // *****************************************************************************
 // *****************************************************************************
+void TIMER_2_Handler (void);
 void I2C3_MASTER_Handler (void);
 void I2C3_BUS_Handler (void);
 
@@ -75,6 +76,21 @@ void I2C3_BUS_Handler (void);
 // Section: System Interrupt Vector definitions
 // *****************************************************************************
 // *****************************************************************************
+void __attribute__((used)) __ISR(_TIMER_2_VECTOR, ipl1SOFT) TIMER_2_Handler (void)
+{
+    static uint8_t i = 0;
+    if(i >= 9)
+    {
+        // 1Hz
+
+        i = 0;
+    } else {
+        i++;
+    }
+    
+    TIMER_2_InterruptHandler();
+}
+
 void __attribute__((used)) __ISR(_I2C3_MASTER_VECTOR, ipl1SOFT) I2C3_MASTER_Handler (void)
 {
     I2C3_MASTER_InterruptHandler();

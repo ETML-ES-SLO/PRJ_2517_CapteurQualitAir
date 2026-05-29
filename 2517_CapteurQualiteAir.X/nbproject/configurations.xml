@@ -26,6 +26,10 @@
               </logicalFolder>
               <itemPath>../src/config/default/peripheral/i2c/plib_i2c_smbus_common.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="tmr" displayName="tmr" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/tmr/plib_tmr_common.h</itemPath>
+              <itemPath>../src/config/default/peripheral/tmr/plib_tmr2.h</itemPath>
+            </logicalFolder>
           </logicalFolder>
           <itemPath>../src/config/default/toolchain_specifics.h</itemPath>
           <itemPath>../src/config/default/definitions.h</itemPath>
@@ -44,6 +48,7 @@
                      displayName="2517_CapteurQualiteAir_default"
                      projectFiles="true">
         <logicalFolder name="components" displayName="components" projectFiles="true">
+          <itemPath>2517_CapteurQualiteAir_default/components/tmr2.yml</itemPath>
           <itemPath>2517_CapteurQualiteAir_default/components/core.yml</itemPath>
           <itemPath>2517_CapteurQualiteAir_default/components/i2c3.yml</itemPath>
           <itemPath>2517_CapteurQualiteAir_default/components/dfp.yml</itemPath>
@@ -90,6 +95,9 @@
               </logicalFolder>
               <itemPath>../src/config/default/peripheral/i2c/plib_i2c_smbus_common.c</itemPath>
             </logicalFolder>
+            <logicalFolder name="tmr" displayName="tmr" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/tmr/plib_tmr2.c</itemPath>
+            </logicalFolder>
           </logicalFolder>
           <logicalFolder name="stdio" displayName="stdio" projectFiles="true">
             <itemPath>../src/config/default/stdio/xc32_monitor.c</itemPath>
@@ -99,12 +107,15 @@
           <itemPath>../src/config/default/exceptions.c</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <itemPath>../src/main.c</itemPath>
       <itemPath>app.c</itemPath>
       <itemPath>Mc32CapteurENS160.c</itemPath>
       <itemPath>Mc32BattCtrl.c</itemPath>
+      <itemPath>../src/main.c</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">
@@ -113,7 +124,7 @@
         <targetDevice>PIC32MM0256GPM028</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>snap</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>5.10</languageToolchainVersion>
         <platform>3</platform>
@@ -385,6 +396,8 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="1d000000-1d03ffff"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/microchip/harmony/v3/PROJ/PRJ_2517_CapteurQualitAir/2517_CapteurQualiteAir.X/debug/default/2517_CapteurQualiteAir_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>
@@ -469,6 +482,8 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="1d000000-1d03ffff"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/microchip/harmony/v3/PROJ/PRJ_2517_CapteurQualitAir/2517_CapteurQualiteAir.X/debug/default/2517_CapteurQualiteAir_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>
