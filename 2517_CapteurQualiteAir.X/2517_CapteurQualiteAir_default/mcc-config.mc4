@@ -52,7 +52,7 @@ generatedFileHashHistoryMap:
 - file: ..\src\config\default\peripheral\i2c\plib_i2c_smbus_common.h
   hash: 585f8d40c9fcaa072abdf3039cbc4b26ee3fbcb902171dd7e79a682e3973f995
 - file: ..\src\config\default\peripheral\tmr\plib_tmr2.c
-  hash: 3080c6929403047a7e269ba6d3e96fb1c7a157f30c95009d4b9749e2e5dd4d9c
+  hash: 1431c58710e9db9e99e8b675212f6e84d3cec9e33c81b1eed6f2b93dca7b0d82
 - file: ..\src\config\default\peripheral\tmr\plib_tmr2.h
   hash: 1956a5d2c31e9fd9c345b2c639336db3614afb6c51fc0d961e2f3f80527fc8c5
 - file: ..\src\config\default\peripheral\tmr\plib_tmr_common.h

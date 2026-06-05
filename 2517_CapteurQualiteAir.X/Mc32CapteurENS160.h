@@ -23,13 +23,22 @@
 #include <stdbool.h>
 
 #define SELECT_2517_CAPTEUR_QUALITE_AIR_PIC32MM
+#define SELECT_2517_ENS160_ADDR_HIGH
 
 //------------------------------------------------//
 // Addresses I2C ENS160 (page 5 datasheet)
 //------------------------------------------------//
 
-#define ENS160_ADDR_I2C_PIN_LOW     0x52
-#define ENS160_ADDR_I2C_PIN_HIGH    0x53
+#define ENS160_ADDR_I2C_PIN_LOW     0x52 // Addr. sur PCB 2517 
+#define ENS160_ADDR_I2C_PIN_HIGH    0x53 // Addr. sur ENS160 DFROBOT
+
+#ifdef SELECT_2517_ENS160_ADDR_LOW
+#define ENS160_ADDR_I2C ENS160_ADDR_I2C_PIN_LOW
+#endif 
+
+#ifdef SELECT_2517_ENS160_ADDR_HIGH
+#define ENS160_ADDR_I2C ENS160_ADDR_I2C_PIN_HIGH
+#endif 
 
 //------------------------------------------------//
 // Addresses ENS160
@@ -50,6 +59,14 @@
 #define DATA_MISR       0x38
 #define GPR_WRITE       0x40
 #define GPR_READ        0x48
+
+//------------------------------------------------//
+// OPMODE states
+//------------------------------------------------//
+
+#define OPMODE_DEEP_SLEEP   0x00
+#define OPMODE_IDLE         0x01
+#define OPMODE_OPERATIONAL  0x02
 
 //------------------------------------------------//
 // Retour ENS160 standard

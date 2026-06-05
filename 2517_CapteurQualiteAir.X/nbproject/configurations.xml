@@ -40,6 +40,7 @@
       <itemPath>app.h</itemPath>
       <itemPath>Mc32CapteurENS160.h</itemPath>
       <itemPath>Mc32BattCtrl.h</itemPath>
+      <itemPath>main.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

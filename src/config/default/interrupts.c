@@ -50,7 +50,7 @@
 // *****************************************************************************
 #include "interrupts.h"
 #include "definitions.h"
-
+#include "../2517_CapteurQualiteAir.X/main.h"
 
 
 // *****************************************************************************
@@ -78,14 +78,26 @@ void I2C3_BUS_Handler (void);
 // *****************************************************************************
 void __attribute__((used)) __ISR(_TIMER_2_VECTOR, ipl1SOFT) TIMER_2_Handler (void)
 {
-    static uint8_t i = 0;
-    if(i >= 9)
+    static uint8_t cnt1Hz = 0;
+    static uint8_t cnt25Hz = 0;
+    if(cnt1Hz >= 99)
     {
         // 1Hz
-
-        i = 0;
+        
+        
+        cnt1Hz = 0;
     } else {
-        i++;
+        cnt1Hz++;
+    }
+    
+    if(cnt25Hz >= 3)
+    {
+        // 25Hz
+        main_update_state(MAIN_STATE_SERVICE_TASKS);
+        
+        cnt25Hz = 0;
+    } else {
+        cnt25Hz++;
     }
     
     TIMER_2_InterruptHandler();

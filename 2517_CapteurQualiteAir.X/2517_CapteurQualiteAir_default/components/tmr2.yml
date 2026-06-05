@@ -57,7 +57,7 @@ data:
       - children:
         - attributes:
             id: tmr2
-            value: '9374'
+            value: '936'
           type: Dynamic
         type: Values
       type: Long
@@ -85,7 +85,7 @@ data:
         type: Attributes
       - children:
         - attributes:
-            value: '100.0'
+            value: '10.0'
           type: User
         type: Values
       type: Float

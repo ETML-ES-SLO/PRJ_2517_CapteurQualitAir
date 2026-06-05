@@ -82,4 +82,14 @@ data:
           type: User
         type: Values
       type: Long
+    I2C_INCLUDE_FORCED_WRITE_API:
+      attributes:
+        id: I2C_INCLUDE_FORCED_WRITE_API
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
   userData: {}

@@ -19,6 +19,7 @@
 
 #include "Mc32BattCtrl.h"
 #include "peripheral/adc/plib_adc.h"
+#include "../2517_CapteurQualiteAir.X/main.h"
 
 //------------------------------------------------//
 // Fonctions
@@ -26,8 +27,8 @@
 
 static inline void delay_us(uint32_t us)
 {
-    // À 24 MHz ? 1 instruction ? 41 ns
-    // 1 µs ? 24 instructions
+    // À 24 MHz -> 1 instruction -> 41 ns
+    // 1 us -> 24 instructions
     for(uint32_t i = 0; i < (us * CLK_MUC_MHZ); i++)
     {
         __asm__ volatile("nop");

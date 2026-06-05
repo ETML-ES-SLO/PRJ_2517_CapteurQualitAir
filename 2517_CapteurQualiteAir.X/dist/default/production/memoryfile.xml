@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <project>                                  
-  <executable name="dist/default/debug/2517_CapteurQualiteAir.X.debug.elf">                 
+  <executable name="dist/default/production/2517_CapteurQualiteAir.X.production.elf">                 
     <memory name="program">                 
       <units>bytes</units>                 
       <length>263312</length>                 
-      <used>6340</used>                     
-      <free>256972</free>                     
+      <used>6336</used>                     
+      <free>256976</free>                     
     </memory>                              
     <memory name="data">              
       <units>bytes</units>                 
-      <length>33280</length>                 
-      <used>1104</used>                     
-      <free>32176</free>                     
+      <length>32768</length>                 
+      <used>80</used>                     
+      <free>32688</free>                     
     </memory>                              
   </executable>                            
 </project>                                 

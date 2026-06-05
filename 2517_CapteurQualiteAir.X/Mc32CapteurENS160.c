@@ -18,33 +18,46 @@
 
 #include "Mc32CapteurENS160.h"
 #include "peripheral/i2c/master/plib_i2c3_master.h"
+#include "../2517_CapteurQualiteAir.X/main.h"
 
 //------------------------------------------------//
 // Fonctions
 //------------------------------------------------//
+
+static inline void delay_ms(uint32_t ms)
+{
+    // À 24 MHz -> 1 instruction -> 41 ns
+    // 1 ms -> 24'000 instructions
+    for(uint32_t i = 0; i < (ms * CLK_MUC_MHZ * 1000); i++)
+    {
+        __asm__ volatile("nop");
+    }
+}
+
 
 void ens160_initial_start_up(void)
 {
     
 }
 
+
 void ens160_warm_up(void)
 {
     
 }
 
+
 uint8_t ens160_read8(uint8_t addr)
 {
     uint8_t data;
-    
+            
     // Lécture un octet
-    I2C3_WriteRead(ENS160_ADDR_I2C_PIN_LOW, &addr, 1, &data, 1);
-    
-    // Attend fin transfert
+    I2C3_WriteRead(ENS160_ADDR_I2C, &addr, 1, &data, 1);
     while (I2C3_IsBusy());
     
     return data;
 }
+
 
 uint16_t ens160_read16(uint8_t addr)
 {
@@ -52,23 +65,26 @@ uint16_t ens160_read16(uint8_t addr)
     uint16_t data;
     
     // Lécture un octet
-    I2C3_WriteRead(ENS160_ADDR_I2C_PIN_LOW, &addr, 1, &buf[0], sizeof(buf));
+    I2C3_WriteRead(ENS160_ADDR_I2C, &addr, 1, &buf[0], sizeof(buf));
     
     // Attend fin transfert
     while (I2C3_IsBusy());
     
     // Met les datas dans une variable 16 bits
-    data = ((uint16_t)buf[0] << 8) | buf[1];
+    data = ((uint16_t)buf[1] << 8) | buf[0];
     return data;
 }
+
 
 void ens160_write8(uint8_t addr, uint8_t data)
 {
     uint8_t buf[2];
     buf[0] = addr;
     buf[1] = data;
-    I2C3_Write(ENS160_ADDR_I2C_PIN_LOW, buf, sizeof(buf));
+    I2C3_Write(ENS160_ADDR_I2C, buf, sizeof(buf));
+    while (I2C3_IsBusy());
 }
+
 
 void ens160_write16(uint8_t addr, uint16_t data)
 {
@@ -77,8 +93,9 @@ void ens160_write16(uint8_t addr, uint16_t data)
     buf[1] = data & 0xFF;           // LSB
     buf[2] = (data >> 8) & 0xFF;    // MSB
 
-    I2C3_Write(ENS160_ADDR_I2C_PIN_LOW, buf, sizeof(buf));
+    I2C3_Write(ENS160_ADDR_I2C, buf, sizeof(buf));
 }
+
 
 ens160_status ens160_read_status(void)
 {
@@ -116,6 +133,7 @@ ens160_status ens160_read_status(void)
         }
     }
 }
+
 
 ens160_aqi_uba ens160_read_aqi(void)
 {   
@@ -158,10 +176,10 @@ ens160_aqi_uba ens160_read_aqi(void)
     }
 }
 
+
 bool ens160_init(void)
 {
     I2C3_Initialize(); // Init I2C
-    TMR2_Start(); // Init Timer2 10Hz
     
     // Lecture de PART_ID pour voir si ENS160 répond
     if(PART_ID_RET != ens160_read16(PART_ID))
@@ -169,7 +187,15 @@ bool ens160_init(void)
         return false; // Init NOK
     }
     
-    // Init avec write
+    // ---Init avec write--- //
+    
+    // Reset / idle
+    ens160_write8(OPMODE, OPMODE_DEEP_SLEEP);
+    delay_ms(10);
+    
+    // Mode standard
+    ens160_write8(OPMODE, OPMODE_OPERATIONAL);
+    delay_ms(10);
     
     // Check si temp d'attente nécessaire
     switch(ens160_read_status())
@@ -181,7 +207,7 @@ bool ens160_init(void)
         }
         case INITIAL_START_UP:
         {
-            ens160_initial_start_up();
+            //ens160_initial_start_up();
             break;
         }
         default:
