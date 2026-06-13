@@ -22,7 +22,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define SELECT_2517_CAPTEUR_QUALITE_AIR_PIC32MM
+//------------------------------------------------//
+// Configuration de la librairie
+//------------------------------------------------//
+
 #define SELECT_2517_ENS160_ADDR_HIGH
 
 //------------------------------------------------//
@@ -91,22 +94,6 @@
 #define MASK_DATA_AQI_RESERVED  0b11111000
 
 //------------------------------------------------//
-// Macros
-//------------------------------------------------//
-
-#ifdef SELECT_2517_CAPTEUR_QUALITE_AIR_PIC32MM 
-
-// Chip select pour SPI
-#define CS_LOW          LATAbits.LATA0 = 0
-#define CS_HIGH         LATAbits.LATA0 = 1
-
-// Chip graphique
-#define PD_LOW          LATAbits.LATA1 = 0  // Désactive chip graph.
-#define PD_HIGH         LATAbits.LATA1 = 1  // Active chip graphique
-
-#endif 
-
-//------------------------------------------------//
 // Enumerations
 //------------------------------------------------//
 
@@ -122,7 +109,8 @@ typedef enum {
 // AQI-UBA (Air Quality Index of the "UBA" German Federal Environmental Agency)
 typedef enum
 {
-    EXCELLENT,
+    ERROR_NO_AQI,
+            EXCELLENT,
             GOOD,
             MODERATE,
             POOR,

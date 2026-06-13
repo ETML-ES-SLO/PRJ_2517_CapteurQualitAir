@@ -29,6 +29,7 @@
 #include "../2517_CapteurQualiteAir.X/main.h"
 #include "../2517_CapteurQualiteAir.X/Mc32CapteurENS160.h"
 #include "../2517_CapteurQualiteAir.X/Mc32BattCtrl.h"
+#include "../2517_CapteurQualiteAir.X/Mc32ILI9163.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -44,11 +45,13 @@ int main ( void )
     /* Initialize all modules */
     SYS_Initialize ( NULL );
     ens160_init();
+    lcd_init();
     
     // Test
     uint16_t id;
     uint16_t voltage;
     ens160_status ens160Status;
+    ens160_aqi_uba aqi;
     
     TMR2_Start();       // Init Timer2 10Hz
     
@@ -61,12 +64,17 @@ int main ( void )
         {
             case MAIN_STATE_SERVICE_TASKS:
             {
+                //lcd_write8();
                 //ens160_write8(0x10, 0x02);;
                 id = ens160_read16(PART_ID);
-                //ens160_read8(DATA_AQI);
-                //ns160Status = ens160_read_status();
+                aqi = ens160_read_aqi();
+                ens160Status = ens160_read_status();
                 //GPIO_TP14_Toggle();
-                //voltage = batt_read_voltage();
+                voltage = batt_read_voltage();
+                            
+                //lcd_fill(LCD_BLUE);
+                
+                //TFT_COMMAND_DATA_SELECT_Toggle();
                 
                 // GoTo -> Wait
                 mainData.state = MAIN_STATE_WAIT;

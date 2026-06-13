@@ -45,6 +45,7 @@
 #include "interrupts.h"
 
 
+static volatile EXT_INT_PIN_CALLBACK_OBJ extInt1CbObj;
 // *****************************************************************************
 // *****************************************************************************
 // Section: IRQ Implementation
@@ -56,10 +57,13 @@ void EVIC_Initialize( void )
     INTCONSET = _INTCON_MVEC_MASK;
 
     /* Set up priority and subpriority of enabled interrupts */
+    IPC1SET = 0x8U | 0x0U;  /* EXTERNAL_1:  Priority 2 / Subpriority 0 */
     IPC4SET = 0x40000U | 0x0U;  /* TIMER_2:  Priority 1 / Subpriority 0 */
     IPC18SET = 0x4U | 0x0U;  /* I2C3_MASTER:  Priority 1 / Subpriority 0 */
     IPC18SET = 0x400U | 0x0U;  /* I2C3_BUS:  Priority 1 / Subpriority 0 */
 
+    /* Initialize External interrupt 1 callback object */
+    extInt1CbObj.callback = NULL;
 
 
     /* Configure Shadow Register Set */
@@ -163,6 +167,61 @@ void EVIC_INT_SourceRestore( INT_SOURCE source, bool status )
     }
 
     return;
+}
+
+void EVIC_ExternalInterruptEnable( EXTERNAL_INT_PIN extIntPin )
+{
+    IEC0SET = (uint32_t)extIntPin;
+}
+
+void EVIC_ExternalInterruptDisable( EXTERNAL_INT_PIN extIntPin )
+{
+    IEC0CLR = (uint32_t)extIntPin;
+}
+
+bool EVIC_ExternalInterruptCallbackRegister(
+    EXTERNAL_INT_PIN extIntPin,
+    const EXTERNAL_INT_PIN_CALLBACK callback,
+    uintptr_t context
+)
+{
+    bool status = true;
+    switch  (extIntPin)
+        {
+        case EXTERNAL_INT_1:
+            extInt1CbObj.callback = callback;
+            extInt1CbObj.context  = context;
+            break;
+        default:
+            status = false;
+            break;
+        }
+
+    return status;
+}
+
+
+// *****************************************************************************
+/* Function:
+    void EXTERNAL_1_InterruptHandler(void)
+
+  Summary:
+    Interrupt Handler for External Interrupt pin 1.
+
+  Remarks:
+    It is an internal function called from ISR, user should not call it directly.
+*/
+void __attribute__((used)) EXTERNAL_1_InterruptHandler(void)
+{
+    uintptr_t context_var;
+
+    IFS0CLR = _IFS0_INT1IF_MASK;
+
+    if(extInt1CbObj.callback != NULL)
+    {
+        context_var = extInt1CbObj.context;
+        extInt1CbObj.callback (EXTERNAL_INT_1, context_var);
+    }
 }
 
 

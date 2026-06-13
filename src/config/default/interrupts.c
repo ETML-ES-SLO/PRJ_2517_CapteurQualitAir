@@ -66,6 +66,7 @@
 // Section: System Interrupt Vector declarations
 // *****************************************************************************
 // *****************************************************************************
+void EXTERNAL_1_Handler (void);
 void TIMER_2_Handler (void);
 void I2C3_MASTER_Handler (void);
 void I2C3_BUS_Handler (void);
@@ -76,6 +77,11 @@ void I2C3_BUS_Handler (void);
 // Section: System Interrupt Vector definitions
 // *****************************************************************************
 // *****************************************************************************
+void __attribute__((used)) __ISR(_EXTERNAL_1_VECTOR, ipl2SOFT) EXTERNAL_1_Handler (void)
+{
+    EXTERNAL_1_InterruptHandler();
+}
+
 void __attribute__((used)) __ISR(_TIMER_2_VECTOR, ipl1SOFT) TIMER_2_Handler (void)
 {
     static uint8_t cnt1Hz = 0;
@@ -83,7 +89,7 @@ void __attribute__((used)) __ISR(_TIMER_2_VECTOR, ipl1SOFT) TIMER_2_Handler (voi
     if(cnt1Hz >= 99)
     {
         // 1Hz
-        
+        //TFT_BACKLIGHT_Toggle();
         
         cnt1Hz = 0;
     } else {

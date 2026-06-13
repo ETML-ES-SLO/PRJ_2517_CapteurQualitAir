@@ -56,6 +56,7 @@
 // Section: Handler Routines
 // *****************************************************************************
 // *****************************************************************************
+void EXTERNAL_1_InterruptHandler( void );
 void TIMER_2_InterruptHandler( void );
 void I2C3_MASTER_InterruptHandler( void );
 void I2C3_BUS_InterruptHandler( void );

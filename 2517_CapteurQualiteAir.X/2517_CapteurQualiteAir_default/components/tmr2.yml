@@ -22,8 +22,8 @@ data:
     - children:
       - attributes:
           id: tmr2
-          x: '261'
-          y: '50'
+          x: '31'
+          y: '231'
         type: ElementPosition
       type: ElementPositions
     type: ComponentGraph

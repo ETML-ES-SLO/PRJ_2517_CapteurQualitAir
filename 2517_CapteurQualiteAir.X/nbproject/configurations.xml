@@ -41,6 +41,8 @@
       <itemPath>Mc32CapteurENS160.h</itemPath>
       <itemPath>Mc32BattCtrl.h</itemPath>
       <itemPath>main.h</itemPath>
+      <itemPath>Mc32ILI9163.h</itemPath>
+      <itemPath>Mc32ILI9163_font.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -112,6 +114,7 @@
       <itemPath>Mc32CapteurENS160.c</itemPath>
       <itemPath>Mc32BattCtrl.c</itemPath>
       <itemPath>../src/main.c</itemPath>
+      <itemPath>Mc32ILI9163.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

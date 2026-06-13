@@ -4,7 +4,7 @@
 
 
 project: 2517_CapteurQualiteAir
-creation_date: 2026-06-05T10:27:29.587+02:00[Europe/Berlin]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2026-06-13T12:51:53.646+02:00[Europe/Berlin]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mcc_mode: IDE            # [IDE|Standalone|Headless]
 mcc_version: v5.6.4

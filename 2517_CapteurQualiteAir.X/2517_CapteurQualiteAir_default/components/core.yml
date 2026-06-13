@@ -667,7 +667,7 @@ data:
       children:
       - children:
         - attributes:
-            value: SDO1
+            value: GPIO
           type: User
         type: Values
       type: String
@@ -677,7 +677,7 @@ data:
       children:
       - children:
         - attributes:
-            value: SCK1
+            value: GPIO
           type: User
         type: Values
       type: String
@@ -697,7 +697,7 @@ data:
       children:
       - children:
         - attributes:
-            value: TFT_SDO
+            value: TFT_MOSI
           type: User
         type: Values
       type: String
@@ -708,7 +708,7 @@ data:
       - children:
         - attributes:
             id: core
-            value: '11408'
+            value: '12240'
           type: Dynamic
         type: Values
       type: Hex
@@ -1449,6 +1449,337 @@ data:
             id: tmr2
             value: TIMER_2_InterruptHandler
           type: Dynamic
+        type: Values
+      type: String
+    SPI1_ERR_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: SPI1_ERR_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_41_ENABLE:
+      attributes:
+        id: EVIC_41_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    SPI1_RX_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: SPI1_RX_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_43_ENABLE:
+      attributes:
+        id: EVIC_43_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    SPI1_TX_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: SPI1_TX_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_42_ENABLE:
+      attributes:
+        id: EVIC_42_ENABLE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_41_HANDLER_LOCK:
+      attributes:
+        id: EVIC_41_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_43_HANDLER_LOCK:
+      attributes:
+        id: EVIC_43_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_42_HANDLER_LOCK:
+      attributes:
+        id: EVIC_42_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_43_INTERRUPT_HANDLER:
+      attributes:
+        id: EVIC_43_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: SPI1_RX_Handler
+          type: Dynamic
+        type: Values
+      type: String
+    EVIC_42_INTERRUPT_HANDLER:
+      attributes:
+        id: EVIC_42_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: SPI1_TX_Handler
+          type: Dynamic
+        type: Values
+      type: String
+    BSP_PIN_15_FUNCTION_TYPE:
+      attributes:
+        id: BSP_PIN_15_FUNCTION_TYPE
+      children:
+      - children:
+        - attributes:
+            value: GPIO
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_15_FUNCTION_NAME:
+      attributes:
+        id: BSP_PIN_15_FUNCTION_NAME
+      children:
+      - children:
+        - attributes:
+            value: TFT_CS
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_15_DIR:
+      attributes:
+        id: BSP_PIN_15_DIR
+      children:
+      - children:
+        - attributes:
+            value: Out
+          type: User
+        type: Values
+      type: String
+    EXTERNAL_3_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: EXTERNAL_3_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EXTERNAL_3_EXTERNAL_INTERRUPT_UPDATE:
+      attributes:
+        id: EXTERNAL_3_EXTERNAL_INTERRUPT_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_6_HANDLER_LOCK:
+      attributes:
+        id: EVIC_6_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_6_INTERRUPT_HANDLER:
+      attributes:
+        id: EVIC_6_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: EXTERNAL_3_Handler
+          type: Dynamic
+        type: Values
+      type: String
+    EVIC_6_ENABLE:
+      attributes:
+        id: EVIC_6_ENABLE
+      children:
+      - children:
+        - attributes:
+            value: 'false'
+          type: User
+        type: Values
+      type: Boolean
+    EVIC_6_PRIVALUE:
+      attributes:
+        id: EVIC_6_PRIVALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '524288'
+          type: Dynamic
+        type: Values
+      type: Hex
+    EVIC_6_PRIORITY:
+      attributes:
+        id: EVIC_6_PRIORITY
+      children:
+      - children:
+        - attributes:
+            value: '2'
+          type: User
+        type: Values
+      type: Combo
+    EVIC_4_PRIVALUE:
+      attributes:
+        id: EVIC_4_PRIVALUE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: '8'
+          type: Dynamic
+        type: Values
+      type: Hex
+    EVIC_4_PRIORITY:
+      attributes:
+        id: EVIC_4_PRIORITY
+      children:
+      - children:
+        - attributes:
+            value: '2'
+          type: User
+        type: Values
+      type: Combo
+    EXTERNAL_1_EXTERNAL_INTERRUPT_UPDATE:
+      attributes:
+        id: EXTERNAL_1_EXTERNAL_INTERRUPT_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_4_HANDLER_LOCK:
+      attributes:
+        id: EVIC_4_HANDLER_LOCK
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_4_INTERRUPT_HANDLER:
+      attributes:
+        id: EVIC_4_INTERRUPT_HANDLER
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: EXTERNAL_1_InterruptHandler
+          type: Dynamic
+        type: Values
+      type: String
+    EXTERNAL_1_INTERRUPT_ENABLE_UPDATE:
+      attributes:
+        id: EXTERNAL_1_INTERRUPT_ENABLE_UPDATE
+      children:
+      - children:
+        - attributes:
+            id: core
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    EVIC_4_ENABLE:
+      attributes:
+        id: EVIC_4_ENABLE
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    CONFIG_SYS_CLK_CONFIG_PRIMARY_XTAL:
+      attributes:
+        id: CONFIG_SYS_CLK_CONFIG_PRIMARY_XTAL
+      children:
+      - children:
+        - attributes:
+            value: '8000000'
+          type: User
+        type: Values
+      type: Integer
+    BSP_PIN_17_DIR:
+      attributes:
+        id: BSP_PIN_17_DIR
+      children:
+      - children:
+        - attributes:
+            value: Out
+          type: User
+        type: Values
+      type: String
+    BSP_PIN_18_DIR:
+      attributes:
+        id: BSP_PIN_18_DIR
+      children:
+      - children:
+        - attributes:
+            value: Out
+          type: User
         type: Values
       type: String
   userData:

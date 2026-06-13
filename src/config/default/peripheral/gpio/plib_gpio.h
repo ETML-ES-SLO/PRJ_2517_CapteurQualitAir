@@ -112,20 +112,40 @@
 #define TFT_COMMAND_DATA_SELECT_GetLatch()          ((LATB >> 4) & 0x1)
 #define TFT_COMMAND_DATA_SELECT_PIN                  GPIO_PIN_RB4
 
+/*** Macros for TFT_CS pin ***/
+#define TFT_CS_Set()               (LATBSET = (1<<6))
+#define TFT_CS_Clear()             (LATBCLR = (1<<6))
+#define TFT_CS_Toggle()            (LATBINV= (1<<6))
+#define TFT_CS_OutputEnable()      (TRISBCLR = (1<<6))
+#define TFT_CS_InputEnable()       (TRISBSET = (1<<6))
+#define TFT_CS_Get()               ((PORTB >> 6) & 0x1)
+#define TFT_CS_GetLatch()          ((LATB >> 6) & 0x1)
+#define TFT_CS_PIN                  GPIO_PIN_RB6
+
 /*** Macros for AIR_SDA pin ***/
 #define AIR_SDA_Get()               ((PORTB >> 7) & 0x1)
 #define AIR_SDA_GetLatch()          ((LATB >> 7) & 0x1)
 #define AIR_SDA_PIN                  GPIO_PIN_RB7
 
 /*** Macros for TFT_SCK pin ***/
+#define TFT_SCK_Set()               (LATBSET = (1<<8))
+#define TFT_SCK_Clear()             (LATBCLR = (1<<8))
+#define TFT_SCK_Toggle()            (LATBINV= (1<<8))
+#define TFT_SCK_OutputEnable()      (TRISBCLR = (1<<8))
+#define TFT_SCK_InputEnable()       (TRISBSET = (1<<8))
 #define TFT_SCK_Get()               ((PORTB >> 8) & 0x1)
 #define TFT_SCK_GetLatch()          ((LATB >> 8) & 0x1)
 #define TFT_SCK_PIN                  GPIO_PIN_RB8
 
-/*** Macros for TFT_SDO pin ***/
-#define TFT_SDO_Get()               ((PORTB >> 9) & 0x1)
-#define TFT_SDO_GetLatch()          ((LATB >> 9) & 0x1)
-#define TFT_SDO_PIN                  GPIO_PIN_RB9
+/*** Macros for TFT_MOSI pin ***/
+#define TFT_MOSI_Set()               (LATBSET = (1<<9))
+#define TFT_MOSI_Clear()             (LATBCLR = (1<<9))
+#define TFT_MOSI_Toggle()            (LATBINV= (1<<9))
+#define TFT_MOSI_OutputEnable()      (TRISBCLR = (1<<9))
+#define TFT_MOSI_InputEnable()       (TRISBSET = (1<<9))
+#define TFT_MOSI_Get()               ((PORTB >> 9) & 0x1)
+#define TFT_MOSI_GetLatch()          ((LATB >> 9) & 0x1)
+#define TFT_MOSI_PIN                  GPIO_PIN_RB9
 
 /*** Macros for GPIO_TP14 pin ***/
 #define GPIO_TP14_Set()               (LATBSET = (1<<10))
