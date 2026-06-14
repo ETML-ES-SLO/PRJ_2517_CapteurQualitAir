@@ -1,19 +1,3 @@
-//----------------------------------------------------------------------------//
-//          Mc32BattCtrl.h
-//----------------------------------------------------------------------------//
-// Description      :   Librairie pour la surveillance de l'accu Li-Po
-//                      du projet 2517
-//
-// Auteur           :   Karol Stopa
-// Date de création :   22.05.2026
-// Compilateur      :   XC32 v5.10
-//
-// MODIFICATIONS    :
-// KSA 22.05.2026       Création fichiers Mc32BattCtrl.c et .h
-//
-// documetation : lien datasheet 
-//----------------------------------------------------------------------------//
-
 #ifndef _MAIN_H
 #define _MAIN_H
 

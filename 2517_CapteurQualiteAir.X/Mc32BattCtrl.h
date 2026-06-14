@@ -10,6 +10,7 @@
 //
 // MODIFICATIONS    :
 // KSA 22.05.2026       Création fichiers Mc32BattCtrl.c et .h
+// KSA 14.06.2025       Clôture dev. version 1 de la librairie
 //
 // documetation : lien datasheet 
 //----------------------------------------------------------------------------//
@@ -36,25 +37,37 @@
 #define BAT_DIV_RATION  2    // Ratio de division de la tension de l'accu avant mesure ADC
         
 //------------------------------------------------//
-// Limites accu lookup table
+// Limites accu
 //------------------------------------------------//
 #define BAT_VAL_MAX         4200
 #define BAT_VAL_MIN         3500
 
-#ifdef SELECT_2517_MCP73831_2AD 
-// MCP73831 version D (96.5%)
-#define BAT_THRESHOLD_VAL   (BAT_VAL_MAX * 0.965)
-#endif 
+#define BAT_FULL_LIM        4100
+#define BAT_OK_LIM          3700
+#define BAT_LOW_LIM         3600
 
-#ifdef SELECT_2517_MCP73831_2AC 
-// MCP73831 version C (94%)
+#ifdef SELECT_2517_MCP73831_2AD 
+// MCP73831 version D (94%)
 #define BAT_THRESHOLD_VAL   (BAT_VAL_MAX * 0.94)
 #endif 
 
+#ifdef SELECT_2517_MCP73831_2AC 
+// MCP73831 version C (96.5%)
+#define BAT_THRESHOLD_VAL   (BAT_VAL_MAX * 0.965)
+#endif 
+
 //------------------------------------------------//
-// Macros
+// Enumerations
 //------------------------------------------------//
 
+// Niveau batterie
+typedef enum {
+    BATT_FULL,
+            BATT_OK,
+            BATT_LOW,
+            BATT_VERY_LOW,
+            BATT_EMPTY
+} batt_level;
 
 //------------------------------------------------//
 // Définition des prototypes de fonctions
@@ -66,7 +79,7 @@
 //-- paramètre sortie : -
 //-- paramètre référence (IN-OUT) :   - 
 //-- description : Fonction de delais en us 
-//-- démonstration : À 24 MHz ? 1 instruction ? 41 ns, 1 µs ? 24 instructions 
+//-- démonstration : À 24 MHz, 1 instruction = 41 ns, 1 µs = 24 instructions 
 //-- aide - référence - lien : -
 //----------------------------------------------------------------------------------//
 static inline void delay_us(uint32_t us);
@@ -81,6 +94,28 @@ static inline void delay_us(uint32_t us);
 //-- aide - référence - lien : -
 //----------------------------------------------------------------------------------//
 uint16_t batt_read_voltage(void);
-        
+
+//----------------------------------------------------------------------------------//
+//-- nom fct : batt_check_level 
+//-- paramètre entrée : voltage (tension en mV)
+//-- paramètre sortie : niveau de batterie aproximatif selon enum. batt_level
+//-- paramètre référence (IN-OUT) :   - 
+//-- description : Lecture du niveau aproximatif de charge de l'accu
+//-- démonstration : -
+//-- aide - référence - lien : -
+//----------------------------------------------------------------------------------//
+batt_level batt_check_level(uint16_t voltage);
+
+//----------------------------------------------------------------------------------//
+//-- nom fct : batt_init 
+//-- paramètre entrée : -
+//-- paramètre sortie : -
+//-- paramètre référence (IN-OUT) :   - 
+//-- description : Init des éléments nécessaires à la lecture de l'accu
+//-- démonstration : -
+//-- aide - référence - lien : -
+//----------------------------------------------------------------------------------//
+void batt_init(void);
+
 #endif
 

@@ -22,10 +22,10 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#include <stddef.h>                     // Defines NULL
-#include <stdbool.h>                    // Defines true
-#include <stdlib.h>                     // Defines EXIT_FAILURE
-#include "definitions.h"                // SYS function prototypes
+#include <stddef.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include "definitions.h"
 #include "../2517_CapteurQualiteAir.X/main.h"
 #include "../2517_CapteurQualiteAir.X/Mc32CapteurENS160.h"
 #include "../2517_CapteurQualiteAir.X/Mc32BattCtrl.h"
@@ -46,14 +46,17 @@ int main ( void )
     SYS_Initialize ( NULL );
     ens160_init();
     lcd_init();
+    batt_init();
     
-    // Test
+    // Variables
     uint16_t id;
     uint16_t voltage;
     ens160_status ens160Status;
     ens160_aqi_uba aqi;
     
-    TMR2_Start();       // Init Timer2 10Hz
+    lcd_fill(LCD_BLACK); // Fond LCD noir
+    
+    TMR2_Start();       // Start Timer2 10Hz
     
     while ( true )
     {
@@ -64,17 +67,30 @@ int main ( void )
         {
             case MAIN_STATE_SERVICE_TASKS:
             {
-                //lcd_write8();
-                //ens160_write8(0x10, 0x02);;
+                // Lécture Id du capteur
                 id = ens160_read16(PART_ID);
-                aqi = ens160_read_aqi();
-                ens160Status = ens160_read_status();
-                //GPIO_TP14_Toggle();
-                voltage = batt_read_voltage();
-                            
-                //lcd_fill(LCD_BLUE);
                 
-                //TFT_COMMAND_DATA_SELECT_Toggle();
+                // Execute le reste uniquement si ID ok
+                if(id == PART_ID_RET)
+                {
+                    // Lécture valeur de AQI sur capteur ens160
+                    aqi = ens160_read_aqi();
+                    
+                    // Lécture du status du capteur ens160
+                    ens160Status = ens160_read_status();
+                    
+                    // Lécture de la tension de l'accu
+                    voltage = batt_read_voltage();
+                            
+                    // Affiche text
+                    lcd_print_line(0, "AQI / Batt. [mV]", LCD_BLUE, LCD_BLACK);
+                
+                    // Affiche indice qualité d'air
+                    lcd_print_value(1, aqi, LCD_GREEN, LCD_BLACK);   
+                
+                    // Affiche tension de l'accu
+                    lcd_print_value(1, voltage, LCD_RED, LCD_BLACK);
+                }
                 
                 // GoTo -> Wait
                 mainData.state = MAIN_STATE_WAIT;

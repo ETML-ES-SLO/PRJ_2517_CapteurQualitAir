@@ -37,7 +37,6 @@
           <itemPath>../src/config/default/device.h</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <itemPath>app.h</itemPath>
       <itemPath>Mc32CapteurENS160.h</itemPath>
       <itemPath>Mc32BattCtrl.h</itemPath>
       <itemPath>main.h</itemPath>
@@ -110,7 +109,6 @@
           <itemPath>../src/config/default/exceptions.c</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <itemPath>app.c</itemPath>
       <itemPath>Mc32CapteurENS160.c</itemPath>
       <itemPath>Mc32BattCtrl.c</itemPath>
       <itemPath>../src/main.c</itemPath>

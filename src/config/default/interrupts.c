@@ -89,7 +89,7 @@ void __attribute__((used)) __ISR(_TIMER_2_VECTOR, ipl1SOFT) TIMER_2_Handler (voi
     if(cnt1Hz >= 99)
     {
         // 1Hz
-        //TFT_BACKLIGHT_Toggle();
+        GPIO_TP14_Toggle();
         
         cnt1Hz = 0;
     } else {
@@ -98,7 +98,7 @@ void __attribute__((used)) __ISR(_TIMER_2_VECTOR, ipl1SOFT) TIMER_2_Handler (voi
     
     if(cnt25Hz >= 3)
     {
-        // 25Hz
+        // Code principale à 25Hz
         main_update_state(MAIN_STATE_SERVICE_TASKS);
         
         cnt25Hz = 0;

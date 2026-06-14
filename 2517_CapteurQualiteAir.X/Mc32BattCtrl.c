@@ -58,12 +58,30 @@ uint16_t batt_read_voltage(void)
 }
 
 
-uint8_t batt_convert_to_percentage(uint16_t voltage)
+batt_level batt_check_level(uint16_t voltage)
 {
-    uint8_t percentage;
-    //percentage = voltage [à finir]
-    return percentage;
+    if (voltage >= BAT_FULL_LIM)
+    {
+        return BATT_FULL;
+    }
+    else if (voltage >= BAT_OK_LIM)
+    {
+        return BATT_OK;
+    }
+    else if (voltage >= BAT_LOW_LIM)
+    {
+        return BATT_LOW;
+    }
+    else if (voltage >= BAT_VAL_MIN)
+    {
+        return BATT_VERY_LOW;
+    }
+    else
+    {
+        return BATT_EMPTY;
+    }
 }
+
 
 void batt_init(void)
 {

@@ -9,6 +9,7 @@
 //
 // MODIFICATIONS    :
 // KSA 05.06.2026       Création fichiers Mc32ILI9163_font.h
+// KSA 14.06.2025       Clôture dev. version 1 de la librairie
 //
 // documetation : lien datasheet 
 //----------------------------------------------------------------------------//
@@ -22,19 +23,19 @@
 #include <stdint.h>
 #include <stdbool.h>
  
-/******************************************************************************
-* Police ASCII 5x7
-*
-* Chaque caractère fait 5 colonnes x 7 lignes.
-* On ajoute 1 colonne vide dans le driver, donc chaque caractère affiché
-* prend 6 pixels de large.
-*
-* Table ASCII de 32 à 126 :
-*   lcd_font[0]  = espace ' '
-*   lcd_font[16] = '0'
-*   lcd_font[33] = 'A'
-*   lcd_font[65] = 'a'
-******************************************************************************/
+//----------------------------------------------------------------------------//
+// Police ASCII 5x7
+//
+// Chaque caractère fait 5 colonnes x 7 lignes.
+// On ajoute 1 colonne vide dans le driver, donc chaque caractère affiché
+// prend 6 pixels de large.
+//
+// Table ASCII de 32 à 126 :
+// lcd_font[0]  = espace ' '
+// lcd_font[16] = '0'
+// lcd_font[33] = 'A'
+// lcd_font[65] = 'a'
+//----------------------------------------------------------------------------//
  
 static const uint8_t lcd_font[95][5] =
 {

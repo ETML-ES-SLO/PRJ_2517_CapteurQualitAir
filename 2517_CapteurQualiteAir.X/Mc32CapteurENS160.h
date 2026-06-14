@@ -9,6 +9,7 @@
 //
 // MODIFICATIONS    :
 // KSA 22.05.2026       Création fichiers Mc32CapteurENS160.c et .h
+// KSA 14.06.2025       Clôture dev. version 1 de la librairie
 //
 // documetation : 2517_CapteurQualiteAir/doc/datasheets/ENS160-Datasheet.pdf
 //----------------------------------------------------------------------------//
@@ -121,6 +122,61 @@ typedef enum
 //------------------------------------------------//
 // Définition des prototypes de fonctions
 //------------------------------------------------//
+
+//----------------------------------------------------------------------------------//
+//-- nom fct : delay_ms 
+//-- paramètre entrée : ms (temp d'attente en ms)
+//-- paramètre sortie : -
+//-- paramètre référence (IN-OUT) :   - 
+//-- description : Fonction de delais en us 
+//-- démonstration : À 24 MHz, 1 instruction = 41 ns, 1 ms = 24'000 instructions 
+//-- aide - référence - lien : -
+//----------------------------------------------------------------------------------//
+static inline void delay_ms(uint32_t ms);
+
+//----------------------------------------------------------------------------------//
+//-- nom fct : ens160_read8
+//-- paramètre entrée : Adresse mémoire à lire sur ens160
+//-- paramètre sortie : valeur lue à l'adresse
+//-- paramètre référence (IN-OUT) :   - 
+//-- description : Lécture d'un registe 8 bits sur ens160
+//-- démonstration : - 
+//-- aide - référence - lien : -
+//----------------------------------------------------------------------------------//
+uint8_t ens160_read8(uint8_t addr);
+
+//----------------------------------------------------------------------------------//
+//-- nom fct : ens160_read16
+//-- paramètre entrée : Adresse mémoire à lire sur ens160
+//-- paramètre sortie : valeur lue à l'adresse
+//-- paramètre référence (IN-OUT) :   - 
+//-- description : Lécture d'un registe 16 bits sur ens160
+//-- démonstration : - 
+//-- aide - référence - lien : -
+//----------------------------------------------------------------------------------//
+uint16_t ens160_read16(uint8_t addr);
+
+//----------------------------------------------------------------------------------//
+//-- nom fct : ens160_write8
+//-- paramètre entrée : addr (adresse du registre ens160) | data (valeur à écrire)
+//-- paramètre sortie : -
+//-- paramètre référence (IN-OUT) :   - 
+//-- description : Ecriture d'un registe 8 bits sur ens160
+//-- démonstration : - 
+//-- aide - référence - lien : -
+//----------------------------------------------------------------------------------//
+void ens160_write8(uint8_t addr, uint8_t data);
+
+//----------------------------------------------------------------------------------//
+//-- nom fct : ens160_write16
+//-- paramètre entrée : addr (adresse du registre ens160) | data (valeur à écrire)
+//-- paramètre sortie : -
+//-- paramètre référence (IN-OUT) :   - 
+//-- description : Ecriture d'un registe 16 bits sur ens160
+//-- démonstration : - 
+//-- aide - référence - lien : -
+//----------------------------------------------------------------------------------//
+void ens160_write16(uint8_t addr, uint16_t data);
 
 //----------------------------------------------------------------------------------//
 //-- nom fct : ens160_read_aqi

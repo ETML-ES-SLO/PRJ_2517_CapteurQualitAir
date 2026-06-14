@@ -35,18 +35,6 @@ static inline void delay_ms(uint32_t ms)
 }
 
 
-void ens160_initial_start_up(void)
-{
-    
-}
-
-
-void ens160_warm_up(void)
-{
-    
-}
-
-
 uint8_t ens160_read8(uint8_t addr)
 {
     uint8_t data;
@@ -187,8 +175,6 @@ bool ens160_init(void)
         return false; // Init NOK
     }
     
-    // ---Init avec write--- //
-    
     // Reset / idle
     ens160_write8(OPMODE, OPMODE_DEEP_SLEEP);
     delay_ms(10);
@@ -202,12 +188,12 @@ bool ens160_init(void)
     {
         case WARM_UP:
         {
-            ens160_warm_up();
+            
             break;
         }
         case INITIAL_START_UP:
         {
-            //ens160_initial_start_up();
+            
             break;
         }
         default:
